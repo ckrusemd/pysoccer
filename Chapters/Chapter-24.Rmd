@@ -1,0 +1,10 @@
+---
+title: "Chapter 24"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Chapter 24
