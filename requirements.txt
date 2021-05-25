@@ -1,0 +1,9 @@
+jupyter-book
+matplotlib
+numpy
+ghp-import
+pandas
+plotly
+numpy
+python-dotenv
+pycaret

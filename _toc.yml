@@ -1,0 +1,7 @@
+- file: pysoccer/intro.ipynb
+- part: Statistics
+  chapters:
+  - file: pysoccer/TensorFlow.ipynb
+  - file: pysoccer/test_gpu.ipynb
+  - file: pysoccer/PyCaret.ipynb
+  - file: pysoccer/HelloWorld.ipynb

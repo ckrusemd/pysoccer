@@ -1,0 +1,83 @@
+---
+title: "Chapter 1"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Chapter 1
+
+```{python}
+print("Hello World")
+```
+
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as pyplot
+import sklearn
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+from sklearn.model_selection import train_test_split
+```
+
+```{python}
+
+url_premier_league = ["https://www.football-data.co.uk/mmz4281/2021/E0.csv",
+"https://www.football-data.co.uk/mmz4281/1920/E0.csv",
+"https://www.football-data.co.uk/mmz4281/1819/E0.csv",
+"https://www.football-data.co.uk/mmz4281/1718/E0.csv",
+"https://www.football-data.co.uk/mmz4281/1617/E0.csv",
+"https://www.football-data.co.uk/mmz4281/1516/E0.csv"]
+```
+
+```{python}
+li = []
+for url in url_premier_league:
+    df = pd.read_csv(filepath_or_buffer=url)
+    li.append(df)
+
+frame = pd.concat(li, axis=0, ignore_index=True)
+```
+
+```{python}
+for col in frame: 
+    print(col) 
+```
+
+```{python}
+frame_select = frame[["HomeTeam","AwayTeam","Date","HTHG","HTAG","FTHG","FTAG","FTR"]]
+```
+
+```{python}
+frame_select.head()
+
+X = frame_select[["HTHG","HTAG"]]
+y = frame_select[["FTR"]]
+
+X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.3, random_state=1, stratify=y)
+```
+
+```{python}
+forest = RandomForestClassifier(criterion='gini',n_estimators=25,random_state=1,n_jobs=2)
+forest.fit(X_train, y_train)
+
+```
+
+```{python}
+predicted = forest.predict(X_test)
+```
+
+```{python}
+metrics.accuracy_score(y_true=y_test,y_pred=predicted)
+```
+
+```{python}
+metrics.confusion_matrix(y_true=y_test,y_pred=predicted)
+```
+
+
