@@ -7,3 +7,6 @@ plotly
 numpy
 python-dotenv
 pycaret
+tensorflow
+scikit-learn
+xlrd
